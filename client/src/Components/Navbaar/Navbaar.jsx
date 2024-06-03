@@ -9,7 +9,7 @@ const Navbaar = () => {
   var User = null;
 
   return (
-    <nav>
+    <nav className="main-nav">
       <div className="navbaar">
         <Link to="/" className="nav-item nav-logo">
           <img src={logo} alt="" width={200} />
