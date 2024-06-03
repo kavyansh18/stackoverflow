@@ -58,7 +58,7 @@ nav{
 .navbaar form input{
     min-height: 98%;
     margin: 0;
-    padding: 8px 153px 8px 32px;
+    padding: 8px 15px 9px 32px;
     font-size: 13px;
     border: solid 1px #0000003e;
     border-radius: 3px;
@@ -80,3 +80,20 @@ nav{
 .nav-links:hover{
     background-color: #d3e4eb;
 }
+
+.search input {
+    padding: 5px 10px 5px 30px;
+    width: 200px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+  
+  .search input:focus {
+    width: 250px; /* Optional: Expand width on focus */
+    outline: none;
+  }
+
+  .search{
+    width: 1px;
+  }

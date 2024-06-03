@@ -1,0 +1,83 @@
+
+.auth-section {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  .auth-container-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 30px;
+  }
+  .auth-container-1{
+    padding: 20px 30px;
+  }
+  
+  .login-logo {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  form label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* This adds space between form elements */
+  }
+  
+  form label h4 {
+    margin-bottom: 5px;
+  }
+  
+  .auth-btn {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #007ac6;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .auth-btn:hover {
+    background-color: #005f99;
+  }
+  
+  .handle-switch-btn {
+    background: none;
+    border: none;
+    color: #007ac6;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .handle-switch-btn:hover {
+    color: #005f99;
+  }
+  
+  .auth-container-2 form input[type="email"], .auth-container-2 form input[type="password"], .auth-container-2 form input[type="text"] {
+  box-sizing: border-box;
+  height: 35px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+  @media screen and (max-width: 820px) {
+    .auth-container-1 {
+      display: none;
+    }
+  }
