@@ -1,13 +1,39 @@
 import React, { useState } from "react";
 import "./Auth.css";
+import { useDispatch } from "react-redux";
+import {useNavigate} from 'react-router-dom'
 import icon from "../../assets/logo.png";
 import AboutAuth from "./AboutAuth";
+import { signup, login } from "../../actions/auth";
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const handleSwitch = () => {
     setIsSignup(!isSignup);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(!email && !password){
+      alert("Enter email and password")
+    }
+    if(isSignup){
+      if(!name){
+        alert("Enter a name to continue")
+      }
+      dispatch(signup({name,email,password},navigate))
+    }else{
+      dispatch(login({email,password},navigate))
+    }
+    console.log({name,email,password})
+  }
 
   return (
     <section className="auth-section">
@@ -16,16 +42,16 @@ const Auth = () => {
         {!isSignup && (
           <img src={icon} alt="stack overflow" className="login-logo" />
         )}
-        <form>
+        <form onSubmit={handleSubmit}>
           {isSignup && (
             <label htmlFor="name">
               <h4>Name</h4>
-              <input type="text" name="name" id="name" />
+              <input type="text" name="name" id="name" onChange={(e) => {setName(e.target.value)}} />
             </label>
           )}
           <label htmlFor="email">
             <h4>Email</h4>
-            <input type="email" name="email" id="email" />
+            <input type="email" name="email" id="email" onChange={(e) => {setEmail(e.target.value)}} />
           </label>
           <label htmlFor="password">
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -36,7 +62,7 @@ const Auth = () => {
                 </p>
               )}
             </div>
-            <input type="password" name="password" id="password" />
+            <input type="password" name="password" id="password" onChange={(e) => {setPassword(e.target.value)}} />
             {isSignup && (
               <p style={{ color: "#666767", fontSize: "13px" }}>
                 Password must contain atleast eight, characters including
