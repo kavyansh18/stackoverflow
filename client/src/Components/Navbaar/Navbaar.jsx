@@ -56,7 +56,7 @@ const Navbaar = () => {
               marginRight="30px"
             >
               <Link to="/User" style={{ color: "white", textDecoration: "none" }}>
-                K
+                {User.result.name.charAt(0).toUpperCase()}
               </Link>
             </Avatar>
             <button className="nav-item nav-links">Log Out</button>

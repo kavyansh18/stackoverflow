@@ -1,8 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import moment from "moment";
+import { Link, useParams } from "react-router-dom";
 import Avatar from "../../Components/Avatar/Avatar";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteAnswer } from "../../actions/question";
 
-const DisplayAnswer = ({ question }) => {
+const DisplayAnswer = ({ question, handleShare }) => {
+
+  const User = useSelector((state) => (state.currentUserReducer))
+  const {id} = useParams()
+  const dispatch = useDispatch()
+
+  const handleDelete = (answerId, noOfAnswers) => {
+    dispatch(deleteAnswer(id, answerId, noOfAnswers-1))
+  }
   return (
     <div>
       {question.answer.map((ans) => (
@@ -10,11 +21,17 @@ const DisplayAnswer = ({ question }) => {
           <p>{ans.answerBody}</p>
           <div className="question-actions-user flex">
             <div>
-              <button type="button">Share</button>
-              <button type="button">Delete</button>
+              <button type="button" onClick={handleShare}>
+                Share
+              </button>
+              {User?.result?._id === ans?.userId && (
+                <button type="button" onClick={() => handleDelete(ans._id, question.noOfAnswers)}>
+                  Delete
+                </button>
+              )}
             </div>
             <div>
-              <p>answerd on {ans.answeredOn}</p>
+              <p>answerd on {moment(ans.answeredOn).fromNow()}</p>
               <Link
                 to={`/User/${question.userId}`}
                 className="user-link"
