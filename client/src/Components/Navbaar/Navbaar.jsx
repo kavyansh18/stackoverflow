@@ -1,7 +1,9 @@
 import React, {useEffect} from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "../Navbaar/Navbaar.css";
+//import { jwt_decode } from 'jwt-decode';
+
 import search from "../../assets/search.svg";
 import Avatar from "../../Components/Avatar/Avatar";
 import {useSelector,useDispatch} from 'react-redux'
@@ -11,8 +13,22 @@ const Navbaar = () => {
 
   var User = useSelector((state) => (state.currentUserReducer))
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    dispatch({type: 'LOGOUT'})
+    navigate('/')
+    dispatch(setCurrentUser(null))
+  }
 
   useEffect(() => {
+    // const token = User?.token
+    // if(token){
+    //   const decodedToken = jwt_decode(token)
+    //   if(decodedToken.exp * 1000 < new Date().getTime()){
+    //     handleLogout()
+    //   }
+    // }
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
   },[dispatch])
 
@@ -59,7 +75,7 @@ const Navbaar = () => {
                 {User.result.name.charAt(0).toUpperCase()}
               </Link>
             </Avatar>
-            <button className="nav-item nav-links">Log Out</button>
+            <button className="nav-item nav-links" onClick={handleLogout}>Log Out</button>
           </>
         )}
       </div>
