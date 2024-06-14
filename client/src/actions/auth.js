@@ -20,6 +20,6 @@ export const login = (authData, navigate) => async (dispatch) => {
         navigate('/')
     } catch (error) {
         console.log(error)
-        alert("User dose't exist either wrong credentials")
+        alert("User doesn't exist either wrong credentials")
     }
 }
