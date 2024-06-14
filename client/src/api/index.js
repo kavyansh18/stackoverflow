@@ -6,6 +6,7 @@ const API = axios.create({baseURL:'http://localhost:5500'})
 //     if(localStorage.getItem('Profile')){
 //         req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('Profile')).token}`
 //     }
+//     return req;
 // })
 
 export const logIn = (authData) => API.post('/user/login',authData)
@@ -18,3 +19,6 @@ export const voteQuestion = (id, value, userId) => API.patch(`/questions/vote/${
 
 export const postAnswer = (id, noOfAnswers, answerBody, userAnswered, userId) => API.patch(`/answer/post/${id}`, { noOfAnswers, answerBody, userAnswered, userId})
 export const deleteAnswer = (id, answerId, noOfAnswers) => API.patch(`/answer/delete/${id}`, { answerId, noOfAnswers });
+
+export const fetchAllUsers = () => API.get("/user/getAllUsers");
+export const updateProfile = (id, updateData) => API.patch(`/user/update/${id}`, updateData);

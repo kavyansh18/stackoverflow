@@ -5,14 +5,14 @@ import Navbaar from './Components/Navbaar/Navbaar'
 import AllRoutes from './AllRoutes'
 import { useEffect } from 'react'
 import { fetchAllQuestions } from './actions/question'
+import { fetchAllUsers } from './actions/users'
 
 function App() {
 
-  const dispatch = useDispatch(
-
-  )
+  const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchAllQuestions())
+    dispatch(fetchAllUsers())
   }, [dispatch])
 
   return (
