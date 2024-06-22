@@ -77,7 +77,7 @@ const QuestionDetails = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  const url = "https://stackoverflow-zt0h.onrender.com";
+  const url = "http://localhost:5500";
 
   const handlePostAns = (e, answerLength) => {
     e.preventDefault();

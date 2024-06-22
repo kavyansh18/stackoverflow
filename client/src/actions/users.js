@@ -16,3 +16,12 @@ export const updateProfile = (id, updateData) => async (dispatch) => {
     console.log(error);
   }
 };
+
+// export const updatePassword = (email, updatePass) => async (dispatch) => {
+//   try {
+//     const { data } = await api.updatePassword(email, updatePass);
+//     dispatch({ type: "UPDATE_PASSWORD", payload: data });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }

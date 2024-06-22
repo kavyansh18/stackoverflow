@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import { useDispatch } from "react-redux";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,Link} from 'react-router-dom'
 import icon from "../../assets/logo.png";
 import AboutAuth from "./AboutAuth";
 import { signup, login } from "../../actions/auth";
+
+
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
@@ -56,9 +58,9 @@ const Auth = () => {
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <h4>Password</h4>
               {!isSignup && (
-                <p style={{ color: "#007ac6", fontSize: "13px" }}>
-                  Forget Password?
-                </p>
+                <Link to="/Auth/RequestReset" className="forgetpass">
+                Forget Password?
+              </Link>
               )}
             </div>
             <input type="password" name="password" id="password" onChange={(e) => {setPassword(e.target.value)}} />
