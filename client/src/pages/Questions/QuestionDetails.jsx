@@ -77,7 +77,7 @@ const QuestionDetails = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-  const url = "http://localhost:5500";
+  const url = "https://stackoverflow-kk.onrender.com";
 
   const handlePostAns = (e, answerLength) => {
     e.preventDefault();
