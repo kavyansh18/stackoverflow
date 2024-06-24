@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/auth.js";
+import bcrypt from 'bcryptjs';
 
 export const getAllUsers = async (req, res) => {
   try {
@@ -39,3 +40,24 @@ export const updateProfile = async (req, res) => {
     res.status(405).json({ message: error.message });
   }
 };
+
+export const updatePasswordByEmail = async (req, res) => {
+  const { email, newPassword } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+
+    const updatedUser = await user.save();
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+

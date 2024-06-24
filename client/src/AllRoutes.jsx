@@ -9,7 +9,6 @@ import Tags from './pages/Tags/Tags'
 import Users from './pages/Users/Users'
 import UserProfile from './pages/UserProfile/UserProfile'
 import RequestReset from './pages/ResetPassword/RequestReset'
-import ResetPassword from './pages/ResetPassword/ResetPassword'
 
 const AllRoutes = () => {
   return (
@@ -23,7 +22,6 @@ const AllRoutes = () => {
       <Route path='/Users' element={<Users />} />
       <Route path='/Users/:id' element={<UserProfile />} />
       <Route path='/Auth/RequestReset' element={<RequestReset />} />
-      <Route path='/Auth/ResetPassword' element={<ResetPassword />} />
 
     </Routes>
   )

@@ -6,6 +6,10 @@ const usersReducer = (states = [], action) => {
         return states.map((state) =>
           state._id === action.payload._id ? action.payload : state
         );
+      case 'UPDATE_PASSWORD':
+        return states.map((user) =>
+          user.email === action.payload.email ? action.payload : user
+        );
       default:
         return states;
     }

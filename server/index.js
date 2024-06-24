@@ -18,6 +18,8 @@ app.use('/user', userRoutes)
 app.use('/questions', questionRoutes)
 app.use('/answer', answerRoutes)
 
+app.use('/user/updatepassword', userRoutes)
+
 const PORT = process.env.PORT || 5500;
 
 const CONNECTION_URL = "mongodb+srv://admin:admin@stack-overflow.w5cc0om.mongodb.net/?retryWrites=true&w=majority&appName=stack-overflow";
@@ -27,4 +29,3 @@ mongoose.connect(CONNECTION_URL)
     .catch((err) => console.log(err.message));
 
 
-//fp
