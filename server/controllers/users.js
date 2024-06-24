@@ -54,7 +54,7 @@ export const updatePasswordByEmail = async (req, res) => {
     user.password = await bcrypt.hash(newPassword, salt);
 
     const updatedUser = await user.save();
-    res.status(200).json(updatedUser);
+    res.status(200).json({ message: "Password updated successfully", user: updatedUser });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

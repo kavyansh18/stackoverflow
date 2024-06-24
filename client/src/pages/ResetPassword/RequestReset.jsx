@@ -47,6 +47,10 @@ const RequestReset = () => {
     sendMail();
   };
 
+  const checkEmail = () => {
+    di
+  }
+
   const handleVerify = () => {
     //console.log(email)
     if (enteredOtp === generatedOtp) {

@@ -23,33 +23,11 @@ export const updatePasswordByEmail = (email, newPassword) => async (dispatch) =>
   console.log(newPassword)
   try {
     const { data } = await api.updatePasswordByEmail(email, newPassword);
+    alert(data.message);
     dispatch({ type: 'UPDATE_PASSWORD', payload: data });
   } catch (error) {
     console.log(error.response?.data || error.message);
+    alert('User does not exist');
   }
 };
-
-// export const updatePasswordByEmail = (email, newPassword) => async (dispatch) => {
-//   try {
-//     const config = {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     };
-
-//     const { data } = await axios.patch('http://localhost:5500/user/update-password', { email, newPassword }, config);
-
-//     dispatch({
-//       type: 'UPDATE_PASSWORD_SUCCESS',
-//       payload: data,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: 'UPDATE_PASSWORD_FAIL',
-//       payload: error.response && error.response.data.message
-//         ? error.response.data.message
-//         : error.message,
-//     });
-//   }
-// };
 
