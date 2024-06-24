@@ -47,10 +47,6 @@ const RequestReset = () => {
     sendMail();
   };
 
-  const checkEmail = () => {
-    di
-  }
-
   const handleVerify = () => {
     //console.log(email)
     if (enteredOtp === generatedOtp) {
@@ -67,6 +63,7 @@ const RequestReset = () => {
 
   const handleUpdatePassword = () => {
     dispatch(updatePasswordByEmail(email, newPassword));
+    setEmail('')
   };
 
   return (
